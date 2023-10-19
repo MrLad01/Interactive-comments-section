@@ -12,9 +12,9 @@ export default function CommentBox(): React.ReactElement {
 
     return (
         <>
-            <div className = 'w-full h-fit bg-white p-5 rounded-lg flex'>
+            <div className = 'w-full h-fit bg-white p-5 rounded-lg flex gap-6'>
 
-                <div className = 'flex flex-col justify-around gap-4 items-center p-3 bg-light-grayish-blue rounded-2xl bg-opacity-30' >        
+                <div className = 'flex flex-col justify-around gap-4 items-center p-3 bg-light-grayish-blue rounded-2xl bg-opacity-30 h-28' >        
                     <button 
                             disabled = { upVote }
                             onClick = { () => {
@@ -53,8 +53,19 @@ export default function CommentBox(): React.ReactElement {
                     </button>
                 </div>
 
+                <div className = 'flex h-32 w-full ' >
+                    <div className = 'flex justify-between w-full ' >
+                        <div className = 'flex justify-around'>
+                            <img src = "" alt = "" />
+                            <h1> Hello world! </h1>
+                        </div>
+                        <button className = 'bg-slate-400 h-8'>
+                            Reply
+                        </button>
+                    </div>
+                    
 
-                <h1> Hello world! </h1>
+                </div>
             </div>
         </>
     )
