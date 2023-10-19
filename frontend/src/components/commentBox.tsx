@@ -4,6 +4,8 @@ import plusIcon from '../assets/images/icon-plus.svg';
 import minusIcon from '../assets/images/icon-minus.svg';
 import reply from '../assets/images/icon-reply.svg';
 
+import avatar from '../assets/images/avatars/image-amyrobson.png'
+
 
 export default function CommentBox(): React.ReactElement {
 
@@ -55,11 +57,11 @@ export default function CommentBox(): React.ReactElement {
                     </button>
                 </div>
 
-                <div className = 'flex h-32 w-full ' >
+                <div className = 'flex flex-col gap-2 h-32 w-full ' >
 
-                    <div className = 'flex justify-between w-full ' >
-                        <div className = 'flex justify-around'>
-                            <img src = "" alt = "" />
+                    <div className = 'flex justify-between w-full  ' >
+                        <div className = 'flex justify-around items-center'>
+                            <img src = { avatar } alt = "" className = 'w-9 h-9' />
                             <h1> Hello world! </h1>
                         </div>
 
@@ -68,6 +70,8 @@ export default function CommentBox(): React.ReactElement {
                             Reply
                         </button>
                     </div>
+
+                    <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem nesciunt nihil qui non molestiae! Iste nam voluptate aliquam expedita, qui repudiandae, quisquam architecto voluptatem sit quidem ipsam eligendi ab numquam! Sequi, repellat? </p>
                     
 
                 </div>
