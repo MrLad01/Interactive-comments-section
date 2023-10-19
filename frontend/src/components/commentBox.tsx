@@ -1,6 +1,8 @@
 import  React, { useState }  from 'react';
+
 import plusIcon from '../assets/images/icon-plus.svg';
 import minusIcon from '../assets/images/icon-minus.svg';
+import reply from '../assets/images/icon-reply.svg';
 
 
 export default function CommentBox(): React.ReactElement {
@@ -54,12 +56,15 @@ export default function CommentBox(): React.ReactElement {
                 </div>
 
                 <div className = 'flex h-32 w-full ' >
+
                     <div className = 'flex justify-between w-full ' >
                         <div className = 'flex justify-around'>
                             <img src = "" alt = "" />
                             <h1> Hello world! </h1>
                         </div>
-                        <button className = 'bg-slate-400 h-8'>
+
+                        <button className = 'bg-slate-400 h-6 flex items-center justify-around p-2 gap-1'>
+                            <img src = { reply } alt = "" />
                             Reply
                         </button>
                     </div>
