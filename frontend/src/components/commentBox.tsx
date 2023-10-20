@@ -84,7 +84,7 @@ export default function CommentBox(): React.ReactElement {
             {
                 reply &&  <div className = 'w-full h-fit bg-white p-5 rounded-lg flex gap-6 mt-2 justify-around'>
                     <img src = { avatar2 } alt = "" />
-                    <button></button>
+                    <button className = 'p-2' > Reply </button>
                 </div>
 
             }
