@@ -4,7 +4,8 @@ import plusIcon from '../assets/images/icon-plus.svg';
 import minusIcon from '../assets/images/icon-minus.svg';
 import replyIcon from '../assets/images/icon-reply.svg';
 
-import avatar from '../assets/images/avatars/image-amyrobson.png'
+import avatar from '../assets/images/avatars/image-amyrobson.png';
+import avatar2 from '../assets/images/avatars/image-juliusomo.png'; 
 
 
 export default function CommentBox(): React.ReactElement {
@@ -69,7 +70,7 @@ export default function CommentBox(): React.ReactElement {
 
                         <button 
                                 className = 'bg-slate-400 h-6 flex items-center justify-around p-2 gap-1'
-                                onClick = { () => setReply(true) }
+                                onClick = { () => setReply(!reply) }
                         >
                             <img src = { replyIcon } alt = "" />
                             Reply
@@ -81,9 +82,9 @@ export default function CommentBox(): React.ReactElement {
             </div>
 
             {
-                reply &&  <div className = 'w-full h-fit bg-white p-5 rounded-lg flex gap-6'>
-
-
+                reply &&  <div className = 'w-full h-fit bg-white p-5 rounded-lg flex gap-6 mt-2 justify-around'>
+                    <img src = { avatar2 } alt = "" />
+                    <button></button>
                 </div>
 
             }
