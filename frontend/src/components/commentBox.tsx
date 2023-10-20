@@ -14,7 +14,7 @@ export default function CommentBox(): React.ReactElement {
 
     const [ count, setCount ] = useState<number>(1);
     const [ reply, setReply ] = useState<boolean>(false);
-    
+
 
     return (
         <>
@@ -67,7 +67,10 @@ export default function CommentBox(): React.ReactElement {
                             <h1> Hello world! </h1>
                         </div>
 
-                        <button className = 'bg-slate-400 h-6 flex items-center justify-around p-2 gap-1'>
+                        <button 
+                                className = 'bg-slate-400 h-6 flex items-center justify-around p-2 gap-1'
+                                onClick = { () => setReply(true) }
+                        >
                             <img src = { replyIcon } alt = "" />
                             Reply
                         </button>
@@ -75,8 +78,15 @@ export default function CommentBox(): React.ReactElement {
 
                     <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem nesciunt nihil qui non molestiae! Iste nam voluptate aliquam expedita, qui repudiandae, quisquam architecto voluptatem sit quidem ipsam eligendi ab numquam! Sequi, repellat? </p>
                 </div>
-
             </div>
+
+            {
+                reply &&  <div className = 'w-full h-fit bg-white p-5 rounded-lg flex gap-6'>
+
+
+                </div>
+
+            }
         </>
     )
 }
