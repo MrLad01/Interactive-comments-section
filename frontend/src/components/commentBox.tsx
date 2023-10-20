@@ -69,7 +69,7 @@ export default function CommentBox(): React.ReactElement {
                         </div>
 
                         <button 
-                                className = 'bg-slate-400 h-6 flex items-center justify-around p-2 gap-1'
+                                className = 'h-6 flex items-center justify-around p-2 gap-2'
                                 onClick = { () => setReply(!reply) }
                         >
                             <img src = { replyIcon } alt = "" />
@@ -84,7 +84,7 @@ export default function CommentBox(): React.ReactElement {
             {
                 reply &&  <div className = 'w-full h-fit bg-white p-5 rounded-lg flex gap-6 mt-2 justify-around'>
                     <img src = { avatar2 } alt = "" />
-                    <button className = 'p-2' > Reply </button>
+                    <button className = 'p-2 bg-slate-400 ' > Reply </button>
                 </div>
 
             }
