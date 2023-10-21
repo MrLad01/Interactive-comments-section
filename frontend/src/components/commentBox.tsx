@@ -84,7 +84,7 @@ export default function CommentBox(): React.ReactElement {
             {
                 reply &&  <div className = 'w-full h-fit bg-white p-5 rounded-lg flex gap-4 mt-2 justify-around'>
                     <img src = { avatar2 } alt = ""  className = 'w-12 h-12' />
-                    <textarea name = "" id = "" className = 'w-full h-28 p-2 outline-1 border' ></textarea>
+                    <textarea name = "" id = "" className = 'w-full h-28 p-2 outline-1 border-2 rounded-lg' ></textarea>
                     <button className = 'py-1 px-8 bg-slate-400 h-11 rounded-lg ' > REPLY </button>
                 </div>
 
