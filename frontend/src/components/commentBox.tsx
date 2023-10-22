@@ -10,11 +10,15 @@ import avatar2 from '../assets/images/avatars/image-juliusomo.png';
 
 export default function CommentBox(): React.ReactElement {
 
+    const [ user, setUser ] = useState<string>("Hello there!")
+
     const [ upVote, setUpVote ] = useState<boolean>(false);
     const [ downVote, setDownVote ] = useState<boolean>(false); 
 
     const [ count, setCount ] = useState<number>(1);
     const [ reply, setReply ] = useState<boolean>(false);
+    
+
 
     const handleUpVote = () => {
         setDownVote(false)
@@ -85,7 +89,7 @@ export default function CommentBox(): React.ReactElement {
                     <div className = 'flex justify-between w-full  ' >
                         <div className = 'flex justify-around items-center gap-4'>
                             <img src = { avatar } alt = "" className = 'w-9 h-9' />
-                            <h1> Hello world! </h1>
+                            <h1> { user } </h1>
                         </div>
 
                         <button 
@@ -104,7 +108,7 @@ export default function CommentBox(): React.ReactElement {
             {
                 reply &&  <div className = 'w-full h-fit bg-white p-5 rounded-lg flex gap-4 mt-2 justify-around'>
                     <img src = { avatar2 } alt = ""  className = 'w-12 h-12' />
-                    <textarea name = "" id = "" className = 'w-full h-28 p-2 outline-1 border-2 rounded-lg' ></textarea>
+                    <textarea name = "" id = "" className = 'w-full h-28 py-3 px-6 outline-1 border-2 rounded-lg' ></textarea>
                     <button className = 'py-1 px-8 bg-slate-400 h-11 rounded-lg ' > REPLY </button>
                 </div>
 
