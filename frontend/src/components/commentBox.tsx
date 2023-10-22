@@ -14,10 +14,20 @@ export default function CommentBox(): React.ReactElement {
 
     const [ upVote, setUpVote ] = useState<boolean>(false);
     const [ downVote, setDownVote ] = useState<boolean>(false); 
+    const [ post, setPost ] = useState<string>("");
 
     const [ count, setCount ] = useState<number>(1);
     const [ reply, setReply ] = useState<boolean>(false);
+    const [ replyText, setReplyText ] = useState<string>(" ");
+
+ 
+
+    const handleSubmit = ( e ) => {
+        e.preventDefault()
+        setPost(replyText)
+    }
     
+
 
 
     const handleUpVote = () => {
@@ -106,11 +116,11 @@ export default function CommentBox(): React.ReactElement {
             </div>
 
             {
-                reply &&  <div className = 'w-full h-fit bg-white p-5 rounded-lg flex gap-4 mt-2 justify-around'>
+                reply &&  <form action = 'post' onSubmit = { handleSubmit } className = 'w-full h-fit bg-white p-5 rounded-lg flex gap-4 mt-2 justify-around'>
                     <img src = { avatar2 } alt = ""  className = 'w-12 h-12' />
-                    <textarea name = "" id = "" className = 'w-full h-28 py-3 px-6 outline-1 border-2 rounded-lg' ></textarea>
+                    <textarea name = "" id = "" className = 'w-full h-28 py-3 px-6 outline-1 border-2 rounded-lg' onChange = { (e) => setReplyText(e.target.value) } ></textarea>
                     <button className = 'py-1 px-8 bg-slate-400 h-11 rounded-lg ' > REPLY </button>
-                </div>
+                </form>
 
             }
         </>
