@@ -41,11 +41,12 @@ const Comments: React.FC<CommentProps> = ( { currentUser } ) => {
 
     const [ backendComments, setBackendComments ] = useState<Comment1[]>([]);
 
+
     const comments = data.comments
 
     useEffect(() => {
         setBackendComments(comments);
-      }, []);
+    }, []);
     
       const cmmts = useMemo(() => {
         return comments.map(comment => (

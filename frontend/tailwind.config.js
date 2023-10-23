@@ -2,7 +2,10 @@
 export default {
   content: [
     './src/App.tsx',
-    './src/components/commentBox.tsx'
+    './src/components/comments/Comments.tsx',
+    './src/components/comments/Comment.tsx',
+    './src/components/comments/CommentForm.tsx',
+    './src/components/comments/Replies.tsx'
   ],
   theme: {
     extend: {

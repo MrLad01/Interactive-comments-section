@@ -1,50 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import React, {useState} from 'react'
+import { Reply1 } from './Comment'
 
 import plusIcon from '../../assets/images/icon-plus.svg';
 import minusIcon from '../../assets/images/icon-minus.svg';
 import replyIcon from '../../assets/images/icon-reply.svg';
 
-import { Comment1 } from './Comments';
-import CommentForm from './CommentForm';
-import Reply from './Reply';
 
-interface CommentProps {
-    comment: Comment1
+interface ReplyProps {
+    replies: Reply1
 }
 
-export interface Reply1 {
-    id: number;
-        content: string;
-        createdAt: string;
-        score: number;
-        replyingTo: string;
-        user: {
-            image: {
-                png: string;
-                webp: string;
-            };
-            username: string;
-        };
-}
+const Reply: React.FC<ReplyProps> = ( { replies } ) => {
 
-const Comment: React.FC<CommentProps> = ( { comment } ) => {
-
-    const [ backendReplies, setBackendReplies ] = useState<Reply1[]>([])
 
     const [ upVote, setUpVote ] = useState<boolean>(false);
     const [ downVote, setDownVote ] = useState<boolean>(false); 
 
-    const [ count, setCount ] = useState<number>(comment.score);
+    const [ count, setCount ] = useState<number>(replies.score);
     const [ reply, setReply ] = useState<boolean>(false);
-
-
-    useEffect(() => {
-        setBackendReplies(comment.replies)
-    }, [comment])
-  
-    console.log(backendReplies);
-    
-
 
     const handleUpVote = () => {
         setDownVote(false)
@@ -75,9 +48,9 @@ const Comment: React.FC<CommentProps> = ( { comment } ) => {
     }
 
 
+
   return (
-    <>
-        <div className = 'w-full h-fit bg-white p-5 rounded-lg flex gap-6 mb-2 ' key = { comment.id } >
+<div className = 'w-full h-fit bg-white p-5 rounded-lg flex gap-6 mb-2 ' key = { replies.id } >
             <div className = 'flex flex-col justify-around gap-3 items-center p-3 bg-light-grayish-blue rounded-2xl bg-opacity-30 h-24'>        
                 <button 
                     disabled = { upVote }
@@ -112,9 +85,9 @@ const Comment: React.FC<CommentProps> = ( { comment } ) => {
             <div className = 'flex flex-col gap-2 h-32 w-full ' >
                 <div className = 'flex justify-between w-full  ' >
                     <div className = 'flex justify-around items-center gap-4'>
-                        <img src = {`"../../assets/${comment.user.image.png}"`}  alt = "" className = 'w-9 h-9' />
-                        <h1 > { comment.user.username } </h1>
-                        <h2> { comment.createdAt } </h2>
+                        {/* <img src = {`"../../assets/${replies.user.image.png}"`}  alt = "" className = 'w-9 h-9' /> */}
+                        <h1 > { replies.user.username } </h1>
+                        <h2> { replies.createdAt } </h2>
                     </div>
 
                     <button 
@@ -126,22 +99,10 @@ const Comment: React.FC<CommentProps> = ( { comment } ) => {
                     </button>
                 </div>
 
-                <p> { comment.content } </p>
+                <p> { replies.content } </p>
             </div>
         </div>
-        {reply && <CommentForm />}
-        <div className = 'flex'>
-            <div className = 'w-1 mx-8 bg-slate-500'></div>
-            <div className = 'grid' >
-                {
-                    backendReplies.map((backendReply) =>
-                    <Reply  replies = {backendReply} />
-                    )
-                }
-            </div>
-        </div>
-    </>
   )
 }
 
-export default Comment
+export default Reply
