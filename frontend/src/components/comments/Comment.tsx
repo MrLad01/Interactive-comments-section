@@ -77,7 +77,7 @@ const Comment: React.FC<CommentProps> = ( { comment } ) => {
 
   return (
     <>
-        <div className = 'w-full h-fit bg-white p-5 rounded-lg flex gap-6 mb-2 ' key = { comment.id } >
+        <div className = 'w-full h-fit bg-white p-5 rounded-lg flex gap-6 mb-4 ' key = { comment.id } >
             <div className = 'flex flex-col justify-around gap-3 items-center p-3 bg-light-grayish-blue rounded-2xl bg-opacity-30 h-24'>        
                 <button 
                     disabled = { upVote }
@@ -131,7 +131,7 @@ const Comment: React.FC<CommentProps> = ( { comment } ) => {
         </div>
         {reply && <CommentForm />}
         <div className = 'flex'>
-            <div className = 'w-1 mx-8 bg-slate-500'></div>
+            <div className = 'w-1 mx-12 bg-slate-500'></div>
             <div className = 'grid' >
                 {
                     backendReplies.map((backendReply) =>

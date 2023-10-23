@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CommentForm:React.FC = () => {
+const CommentForm:React.FC = (  ) => {
   return (
     <form className = 'w-full h-fit bg-white p-5 rounded-lg flex gap-4 my-3 justify-around'>
       {/* <img src = {  } alt = ""  className = 'w-12 h-12' /> */}
