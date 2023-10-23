@@ -42,7 +42,7 @@ const Comment: React.FC<CommentProps> = ( { comment } ) => {
         setBackendReplies(comment.replies)
     }, [comment])
   
-    console.log(backendReplies);
+
     
 
 
@@ -112,7 +112,7 @@ const Comment: React.FC<CommentProps> = ( { comment } ) => {
             <div className = 'flex flex-col gap-2 h-32 w-full ' >
                 <div className = 'flex justify-between w-full  ' >
                     <div className = 'flex justify-around items-center gap-4'>
-                        <img src = {`"../../assets/${comment.user.image.png}"`}  alt = "" className = 'w-9 h-9' />
+                        <img src = {`../../src/assets/${comment.user.image.png}`}  alt = "" className = 'w-9 h-9' />
                         <h1 > { comment.user.username } </h1>
                         <h2> { comment.createdAt } </h2>
                     </div>
@@ -129,17 +129,17 @@ const Comment: React.FC<CommentProps> = ( { comment } ) => {
                 <p> { comment.content } </p>
             </div>
         </div>
-        {reply && <CommentForm />}
         <div className = 'flex'>
             <div className = 'w-1 mx-12 bg-slate-500'></div>
             <div className = 'grid' >
                 {
                     backendReplies.map((backendReply) =>
-                    <Reply  replies = {backendReply} />
+                    <Reply  key = { backendReply.id }  replies = {backendReply} />
                     )
                 }
             </div>
         </div>
+        {reply && <CommentForm />}
     </>
   )
 }

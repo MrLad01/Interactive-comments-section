@@ -88,7 +88,7 @@ const Reply: React.FC<ReplyProps> = ( { replies } ) => {
             <div className = 'flex flex-col gap-2 h-32 w-full ' >
                 <div className = 'flex justify-between w-full  ' >
                     <div className = 'flex justify-around items-center gap-4'>
-                        <img src = {`"../../assets/${replies.user.image.png}"`}  alt = "" className = 'w-9 h-9' />
+                        <img src = {`../../src/assets/${replies.user.image.png}`}  alt = "" className = 'w-9 h-9' />
                         <h1 > { replies.user.username } </h1>
                         <h2> { replies.createdAt } </h2>
                     </div>
