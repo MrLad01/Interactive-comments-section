@@ -132,7 +132,7 @@ const Reply: React.FC<ReplyProps> = ( { replies } ) => {
                 <p> <span className = ' text-blue-800 font-bold ' > @{ replies.replyingTo } </span> { replies.content } </p>
             </div>
         </div>
-        {reply && <CommentForm />}
+        {reply && <CommentForm replyingTo = { replies.user.username } />}
         {
             del && 
             <>

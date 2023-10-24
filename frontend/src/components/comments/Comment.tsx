@@ -139,7 +139,7 @@ const Comment: React.FC<CommentProps> = ( { comment } ) => {
                 }
             </div>
         </div>
-        {reply && <CommentForm />}
+        {reply && <CommentForm  replyingTo = { comment.user.username } />}
     </>
   )
 }
