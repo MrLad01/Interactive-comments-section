@@ -64,8 +64,8 @@ const Reply: React.FC<ReplyProps> = ( { replies } ) => {
     <>
         <div className = 'w-full h-fit bg-white p-5 pb-0 rounded-lg flex gap-6 mb-4 ' key = { replies.id } >
             <div className = 'flex flex-col justify-around gap-3 items-center p-3 bg-light-grayish-blue rounded-2xl bg-opacity-30 h-24'>        
-                <button 
-                    disabled = { upVote }
+               <button 
+                    disabled = { upVote || replies.user.username === user }
                     onClick = { handleUpVote }
                 >
                     <img 
@@ -81,7 +81,7 @@ const Reply: React.FC<ReplyProps> = ( { replies } ) => {
 
 
                 <button
-                        disabled = { downVote || count == 0 }
+                        disabled = { downVote || count == 0 || replies.user.username === user }
                         onClick = { handleDownVote }
                 >
                     <img

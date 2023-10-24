@@ -4,7 +4,7 @@ import data from '../../assets/data.json'
 
 const userImage = data.currentUser.image
 
-const CommentForm:React.FC = (  ) => {
+const CommentForm:React.FC = ( { } ) => {
   return (
     <form className = 'w-full h-fit bg-white p-5 rounded-lg flex gap-4 my-3 justify-around'>
       <img src = { `../../src/assets/${ userImage.png }` }  alt = ""  className = 'w-12 h-12' />
