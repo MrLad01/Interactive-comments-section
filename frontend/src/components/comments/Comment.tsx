@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 
 import plusIcon from '../../assets/images/icon-plus.svg';
 import minusIcon from '../../assets/images/icon-minus.svg';
@@ -9,7 +9,7 @@ import CommentForm from './CommentForm';
 import Reply from './Reply';
 
 interface CommentProps {
-    comment: Comment1
+    comment: Comment1;
 }
 
 export interface Reply1 {
@@ -130,11 +130,11 @@ const Comment: React.FC<CommentProps> = ( { comment } ) => {
             </div>
         </div>
         <div className = 'flex'>
-            <div className = 'w-1 mx-12 bg-slate-500'></div>
+            <div className = 'w-1 mx-12 mb-4 bg-slate-500'></div>
             <div className = 'grid' >
                 {
                     backendReplies.map((backendReply) =>
-                    <Reply  key = { backendReply.id }  replies = {backendReply} />
+                    <Reply  key = { backendReply.id }  replies = {backendReply}  />
                     )
                 }
             </div>

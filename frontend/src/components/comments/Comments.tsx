@@ -4,9 +4,7 @@ import data from '../../assets/data.json'
 
 import Comment from './Comment';
 
-export interface CommentProps {
-    currentUser: string
-}
+
 
 export interface Comment1 {
     id: number;
@@ -37,9 +35,10 @@ export interface Comment1 {
 }
 
 
-const Comments: React.FC<CommentProps> = ( { currentUser } ) => {
+const Comments: React.FC = ( ) => {
 
     const [ backendComments, setBackendComments ] = useState<Comment1[]>([]);
+
 
 
     const comments = data.comments
@@ -49,14 +48,15 @@ const Comments: React.FC<CommentProps> = ( { currentUser } ) => {
     }, []);
     
       const cmmts = useMemo(() => {
-        return comments.map(comment => (
-          <Comment key={comment.id} comment={comment} />
+        return comments.sort((a, b) => b.score - a.score).map(comment => (
+            <Comment key={comment.id} comment={comment} />
         ));
-      }, [backendComments]);
+    }, [backendComments]);
     
     return (
         <>
             {cmmts}
+            {/* <CommentForm /> */}
         </>
     )
     }
