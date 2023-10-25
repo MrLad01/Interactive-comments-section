@@ -1,30 +1,43 @@
-import React, { useState, useContext } from 'react'
-import data from '../../assets/data.json'
-import { CommentContext } from '../../App'
+import React, { useState, useContext } from 'react';
+import { CommentContext } from '../../App';
+import data from '../../assets/data.json';
+import { Reply1 } from './Comment';
 
 
-const userImage = data.currentUser.image
-const png = userImage.png
-const webp = userImage.webp
+const userImage = data.currentUser.image;
+const png = userImage.png;
+const webp = userImage.webp;
+const comments = data.comments;
 
 
 
 interface CommentFormProps {
-  replyingTo: string,
+  replyingTo: string;
 }
 
 const CommentForm:React.FC<CommentFormProps> = ( { replyingTo } ) => {
-
+  
   const user = useContext(CommentContext)
+  
+  // const [rep, setRep] = useState<Reply1[]>([]);
+  // comments.map((comment) => setRep(comment.replies))
+  // const repliesNumber = rep.length;
+  // const commentsNumber = comments.length;
+
+  // console.log(commentsNumber);
 
   const [ content, setContent ] = useState<string>(" ")
+
+  const hello = [ "hi", 'hey', "yoo" ]
+  console.log(hello.length);
+  
   
   const data1 = {
                   "id": 3,
                   "content": { content },
                   "createdAt": "1 week ago",
                   "score": 0,
-                  "replyingTo": "maxblagun",
+                  "replyingTo": { replyingTo } ,
                   "user": {
                     "image": { 
                       "png": { png },
