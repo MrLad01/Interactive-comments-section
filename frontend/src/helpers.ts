@@ -2,6 +2,9 @@ import data from './assets/data.json'
 
 
 const user = data.currentUser;
+const png = data.currentUser.image.png;
+const webp = data.currentUser.image.webp;
+
 
 
 async function addReply(text: string, parentUsername: string):Promise<void> {
@@ -13,8 +16,8 @@ async function addReply(text: string, parentUsername: string):Promise<void> {
         "replyingTo": { parentUsername } ,
         "user": {
           "image": { 
-            "png": {  },
-            "webp": { }
+            "png": { png  },
+            "webp": { webp }
           },
           "username": { user }
         }
