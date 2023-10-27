@@ -4,7 +4,7 @@ import data from './assets/data.json'
 const user = data.currentUser;
 
 
-async function addReply({ text, parentUsername }) {
+async function addReply(text: string, parentUsername: string):Promise<void> {
     const data1 = {
         "id": 3,
         "content": { text },

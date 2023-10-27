@@ -27,7 +27,7 @@ const CommentForm:React.FC<CommentFormProps> = ( { replyingTo } ) => {
   
   const handleSubmit = ( event:FormDataEvent ) => {
       event.preventDefault();
-      addReply({ content, replyingTo  }).then
+      addReply( content, replyingTo  ).then
   }
 
   
