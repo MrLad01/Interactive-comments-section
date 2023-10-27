@@ -1,7 +1,6 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, FormEvent } from 'react';
 import { CommentContext } from '../../App';
 import data from '../../assets/data.json';
-import { Reply1 } from './Comment';
 import addReply from '../../helpers';
 
 
@@ -21,14 +20,19 @@ const CommentForm:React.FC<CommentFormProps> = ( { replyingTo } ) => {
   
   const [ content, setContent ] = useState<string>(" ")
   
-  const handleSubmit = (  ) => {
+  const handleSubmit = ( e:FormEvent ) => {
+      e.preventDefault();
       addReply( content, replyingTo  ).then(data => console.log(data)
       )
+      console.log(content);
+      console.log(replyingTo);
+      setContent("")
+      
   }
 
   
   return (
-    <form className = 'w-full h-fit bg-white p-5 rounded-lg flex gap-4 my-3 justify-around'  >
+    <form className = 'w-full h-fit bg-white p-5 rounded-lg flex gap-4 my-3 justify-around' id = 'comments-form' name = 'comments-form'  >
       <img src = { `../../src/assets/${ userImage.png }` }  alt = ""  className = 'w-12 h-12' />
       <textarea name = "" id = "" className = 'w-full h-28 py-3 px-6 outline-1 border-2 rounded-lg' value = { content }  onChange = { (e) => setContent( e.target.value ) }  ></textarea>
       <button 

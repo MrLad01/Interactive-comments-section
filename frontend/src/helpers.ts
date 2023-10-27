@@ -7,7 +7,7 @@ const webp = data.currentUser.image.webp;
 
 
 
-async function addReply(text: string, parentUsername: string):Promise<void> {
+async function addReply(text: string, parentUsername: string) {
     const data1 = {
         "id": 3,
         "content": { text },
@@ -23,8 +23,7 @@ async function addReply(text: string, parentUsername: string):Promise<void> {
         }
       }
 
-    return 
-        { data1 }
+    return  data1;
     
 } 
 
