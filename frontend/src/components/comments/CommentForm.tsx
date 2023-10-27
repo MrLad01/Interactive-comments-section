@@ -21,11 +21,9 @@ const CommentForm:React.FC<CommentFormProps> = ( { replyingTo } ) => {
   
   const [ content, setContent ] = useState<string>(" ")
   
-  const hello = [ "hi", 'hey', "yoo" ]
-  console.log(hello.length);
-  
   const handleSubmit = (  ) => {
-      addReply( content, replyingTo  ).then
+      addReply( content, replyingTo  ).then(data => console.log(data)
+      )
   }
 
   
