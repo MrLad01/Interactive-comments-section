@@ -20,9 +20,9 @@ async function addReply(text: string, parentUsername: string):Promise<void> {
         }
       }
 
-    return (
+    return 
         { data1 }
-    )
+    
 } 
 
 
