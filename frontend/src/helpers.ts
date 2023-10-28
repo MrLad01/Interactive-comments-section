@@ -7,8 +7,9 @@ const webp = data.currentUser.image.webp;
 
 
 
-async function addReply(id: number, content: string, replyingTo: string) {
-    const data1 = {
+ export default async function addReply( id: number, content: string, replyingTo: string ) {
+  
+  const data1 = {
         "id": id,
         "content":  content ,
         "createdAt": "1 week ago",
@@ -23,32 +24,27 @@ async function addReply(id: number, content: string, replyingTo: string) {
         }
       }
 
-    return  data1;
-    
+  return  data1; 
 } 
 
-
-export default addReply;
-
-
-export async function deleteReply(id: number) {
-    const data1 = {
-        "id": id,
-        "content":  String ,
-        "createdAt": "1 week ago",
-        "score": 0,
-        "replyingTo":  String  ,
-        "user": {
-        "image": { 
-            "png":  png  ,
-            "webp":  webp 
-        },
-            "username":  user 
-        }
-    }
-
-    return  data1;
+export async function deleteReply( id: number ) {
     
+  const data1 = {
+      "id": id,
+      "content":  String ,
+      "createdAt": "1 week ago",
+      "score": 0,
+      "replyingTo":  String  ,
+      "user": {
+      "image": { 
+          "png":  png  ,
+          "webp":  webp 
+      },
+          "username":  user 
+      }
+  }
+
+  return  data1;
 } 
 
 export async function editReply(id: number) {
@@ -71,6 +67,8 @@ export async function editReply(id: number) {
     
 } 
 
+
+
 export async function addComment(id: number, content:string ) {
   const data1 = {
     "id": id,
@@ -91,7 +89,9 @@ export async function addComment(id: number, content:string ) {
   
 } 
 
-export async function deleteComment(id: number ) {
+
+export async function deleteComment( id: number ) {
+  
   const data1 = {
     "id": id,
     "content": String,
