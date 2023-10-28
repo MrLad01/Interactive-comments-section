@@ -1,9 +1,7 @@
 import  React, { useEffect, useMemo, useState } from 'react'
 import data from '../../assets/data.json'
 
-
 import Comment from './Comment';
-// import CommentForm from './CommentForm';
 import NewForm from './NewForm';
 
 
@@ -39,30 +37,38 @@ export interface Comment1 {
 
 const Comments: React.FC = ( ) => {
 
-    const [ backendComments, setBackendComments ] = useState<Comment1[]>([]);
+    const [ backendComments, setBackendComments ] = useState<Comment1[]>( [] );
     const [ reply, setReply ] = useState<boolean>(true);
-
 
 
     const comments = data.comments
 
-    useEffect(() => {
-        setBackendComments([...comments]);
-    }, []);
+
+    useEffect( () => {
+        setBackendComments([ ...comments ] );
+    }, [] );
     
-      const cmmts = useMemo(() => {
-        return backendComments.sort((a, b) => b.score - a.score).map(comment => (
+    const cmmts = useMemo(() => 
+    {
+        return backendComments.sort(( a, b ) => b.score - a.score).map( comment => 
+        (
             <Comment key={comment.id} comment={comment} parent = {backendComments} setParent = {setBackendComments}   />
-        ));
+        )
+    );
     }, [backendComments]);
     
+   
+   
     return (
-        <>
-            {cmmts}
-            {/* {reply && <CommentForm  replyingTo = " "  replies = { backendComments } setBackendReplies = { setBackendComments } setReply = { setReply } comment = { true }  />} */}
-            { reply && <NewForm  replies = { backendComments } setBackendReplies = { setBackendComments } setReply = { setReply } /> }
-        </>
-    )
+            <>
+                { cmmts }
+                { reply && <NewForm  
+                            replies = { backendComments } setBackendReplies = { setBackendComments } setReply = { setReply } /> 
+                }
+            </>
+        )
     }
+
+
 
 export default Comments
