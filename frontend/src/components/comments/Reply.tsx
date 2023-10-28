@@ -1,4 +1,4 @@
-import React, {useState, useContext } from 'react';
+import React, {useState, useContext, SetStateAction } from 'react';
 import { CommentContext } from '../../App';
 
 import plusIcon from '../../assets/images/icon-plus.svg';
@@ -9,6 +9,7 @@ import editIcon from '../../assets/images/icon-edit.svg';
 
 import { Reply1 } from './Comment';
 import CommentForm from './CommentForm';
+import { deleteReply } from '../../helpers';
   
 
 
@@ -16,9 +17,10 @@ import CommentForm from './CommentForm';
 interface ReplyProps {
     replies: Reply1
     parent: Reply1[]
+    setParent: React.Dispatch<SetStateAction<Reply1[]>>
 }
 
-const Reply: React.FC<ReplyProps> = ( { replies, parent } ) => {
+const Reply: React.FC<ReplyProps> = ( { replies, parent, setParent } ) => {
 
     const user = useContext(CommentContext)
 
@@ -59,6 +61,15 @@ const Reply: React.FC<ReplyProps> = ( { replies, parent } ) => {
         }
     }
 
+    const handleDelete = ( e:React.MouseEvent ) => {
+        e.preventDefault();
+        deleteReply(replies.id).then(() => {
+            const updatedReplies = parent.filter(reply => reply.id !== replies.id )
+            setParent(updatedReplies)
+        })
+
+    }
+
 
 
   return (
@@ -66,7 +77,7 @@ const Reply: React.FC<ReplyProps> = ( { replies, parent } ) => {
         <div className = 'w-full h-fit bg-white p-5 pb-0 rounded-lg flex gap-6 mb-4 ' key = { replies.id } >
             <div className = 'flex flex-col justify-around gap-3 items-center p-3 bg-light-grayish-blue rounded-2xl bg-opacity-30 h-24'>        
                <button 
-                    disabled = { upVote || replies.user.username === user }
+                    disabled = { upVote }
                     onClick = { handleUpVote }
                 >
                     <img 
@@ -82,7 +93,7 @@ const Reply: React.FC<ReplyProps> = ( { replies, parent } ) => {
 
 
                 <button
-                        disabled = { downVote || count == 0 || replies.user.username === user }
+                        disabled = { downVote || count == 0 }
                         onClick = { handleDownVote }
                 >
                     <img
@@ -133,7 +144,7 @@ const Reply: React.FC<ReplyProps> = ( { replies, parent } ) => {
                 <p> <span className = ' text-blue-800 font-bold ' > @{ replies.replyingTo } </span> { replies.content } </p>
             </div>
         </div>
-        {reply && <CommentForm replyingTo = { replies.user.username } replies = { parent }  />}
+        {reply && <CommentForm replyingTo = { replies.user.username } replies = { parent } setBackendReplies = { setParent } setReply = { setReply }  />}
         {
             del && 
             <>
@@ -147,7 +158,8 @@ const Reply: React.FC<ReplyProps> = ( { replies, parent } ) => {
                             <button className = 'bg-slate-600 text-white rounded-md px-5 py-2'
                             onClick = {() => setDel(!del)}
                             > NO, CANCEL </button>
-                            <button className = 'text-white bg-red-600 rounded-md px-5 py-2' > YES, DELETE </button>
+                            <button className = 'text-white bg-red-600 rounded-md px-5 py-2'
+                            onClick = { handleDelete } > YES, DELETE </button>
                         </div>
                     </div>
                 </div>

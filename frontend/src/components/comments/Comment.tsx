@@ -137,12 +137,13 @@ const Comment: React.FC<CommentProps> = ( { comment } ) => {
                     backendReplies.map((backendReply) =>
                     <Reply  key = { backendReply.id }  replies = {backendReply}
                     parent = { backendReplies }
+                    setParent = { setBackendReplies }
                       />
                     )
                 }
             </div>
         </div>
-        {reply && <CommentForm  replyingTo = { comment.user.username }  replies = { backendReplies }  />}
+        {reply && <CommentForm  replyingTo = { comment.user.username }  replies = { backendReplies } setBackendReplies = { setBackendReplies } setReply = { setReply }  />}
     </>
   )
 }

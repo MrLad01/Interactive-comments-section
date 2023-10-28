@@ -1,25 +1,25 @@
 import data from './assets/data.json'
 
 
-const user = data.currentUser;
+const user = data.currentUser.username;
 const png = data.currentUser.image.png;
 const webp = data.currentUser.image.webp;
 
 
 
-async function addReply(text: string, parentUsername: string) {
+async function addReply(id: number, content: string, replyingTo: string) {
     const data1 = {
-        "id": 3,
-        "content": { text },
+        "id": id,
+        "content":  content ,
         "createdAt": "1 week ago",
         "score": 0,
-        "replyingTo": { parentUsername } ,
+        "replyingTo":  replyingTo  ,
         "user": {
           "image": { 
-            "png": { png  },
-            "webp": { webp }
+            "png":  png  ,
+            "webp":  webp 
           },
-          "username": { user }
+            "username":  user 
         }
       }
 
@@ -29,3 +29,44 @@ async function addReply(text: string, parentUsername: string) {
 
 
 export default addReply;
+
+
+export async function deleteReply(id: number) {
+    const data1 = {
+        "id": id,
+        "content":  String ,
+        "createdAt": "1 week ago",
+        "score": 0,
+        "replyingTo":  String  ,
+        "user": {
+        "image": { 
+            "png":  png  ,
+            "webp":  webp 
+        },
+            "username":  user 
+        }
+    }
+
+    return  data1;
+    
+} 
+
+export async function editReply(id: number) {
+    const data1 = {
+        "id": id,
+        "content":  String ,
+        "createdAt": "1 week ago",
+        "score": 0,
+        "replyingTo":  String  ,
+        "user": {
+          "image": { 
+            "png":  png  ,
+            "webp":  webp 
+          },
+            "username":  user 
+        }
+      }
+
+    return  data1;
+    
+} 
