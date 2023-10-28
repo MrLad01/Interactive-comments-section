@@ -2,6 +2,7 @@ import React, { useState, useContext, FormEvent } from 'react';
 import { CommentContext } from '../../App';
 import data from '../../assets/data.json';
 import addReply from '../../helpers';
+import { Reply1 } from './Comment';
 
 
 const userImage = data.currentUser.image;
@@ -10,9 +11,10 @@ const userImage = data.currentUser.image;
 
 interface CommentFormProps {
   replyingTo: string;
+  replies: Reply1[];
 }
 
-const CommentForm:React.FC<CommentFormProps> = ( { replyingTo } ) => {
+const CommentForm:React.FC<CommentFormProps> = ( { replyingTo, replies } ) => {
   
   // const user = useContext(CommentContext);
 
@@ -22,7 +24,7 @@ const CommentForm:React.FC<CommentFormProps> = ( { replyingTo } ) => {
   
   const handleSubmit = ( e:FormEvent ) => {
       e.preventDefault();
-      addReply( content, replyingTo  ).then(data => console.log(data)
+      addReply( content, replyingTo  ).then(data => replies.push(data)
       )
       console.log(content);
       console.log(replyingTo);

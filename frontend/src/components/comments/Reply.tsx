@@ -14,10 +14,11 @@ import CommentForm from './CommentForm';
 
 
 interface ReplyProps {
-    replies: Reply1,
+    replies: Reply1
+    parent: Reply1[]
 }
 
-const Reply: React.FC<ReplyProps> = ( { replies } ) => {
+const Reply: React.FC<ReplyProps> = ( { replies, parent } ) => {
 
     const user = useContext(CommentContext)
 
@@ -132,7 +133,7 @@ const Reply: React.FC<ReplyProps> = ( { replies } ) => {
                 <p> <span className = ' text-blue-800 font-bold ' > @{ replies.replyingTo } </span> { replies.content } </p>
             </div>
         </div>
-        {reply && <CommentForm replyingTo = { replies.user.username } />}
+        {reply && <CommentForm replyingTo = { replies.user.username } replies = { parent }  />}
         {
             del && 
             <>

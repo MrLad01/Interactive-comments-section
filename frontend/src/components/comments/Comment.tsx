@@ -38,6 +38,7 @@ const Comment: React.FC<CommentProps> = ( { comment } ) => {
     const [ reply, setReply ] = useState<boolean>(false);
 
 
+
     useEffect(() => {
         setBackendReplies(comment.replies)
     }, [comment])
@@ -134,12 +135,14 @@ const Comment: React.FC<CommentProps> = ( { comment } ) => {
             <div className = 'grid' >
                 {
                     backendReplies.map((backendReply) =>
-                    <Reply  key = { backendReply.id }  replies = {backendReply}  />
+                    <Reply  key = { backendReply.id }  replies = {backendReply}
+                    parent = { backendReplies }
+                      />
                     )
                 }
             </div>
         </div>
-        {reply && <CommentForm  replyingTo = { comment.user.username } />}
+        {reply && <CommentForm  replyingTo = { comment.user.username }  replies = { backendReplies }  />}
     </>
   )
 }
