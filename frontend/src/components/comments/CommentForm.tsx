@@ -1,5 +1,5 @@
 import React, { useState, useContext, FormEvent, SetStateAction } from 'react';
-import { CommentContext } from '../../App';
+// import { CommentContext } from '../../App';
 import data from '../../assets/data.json';
 import addReply from '../../helpers';
 import { Reply1 } from './Comment';
@@ -14,9 +14,10 @@ interface CommentFormProps {
   replies: Reply1[];
   setBackendReplies: React.Dispatch<SetStateAction<Reply1[]>>;
   setReply: React.Dispatch<SetStateAction<boolean>>;
+  comment: boolean
 }
 
-const CommentForm:React.FC<CommentFormProps> = ( { replyingTo, replies, setBackendReplies, setReply } ) => {
+const CommentForm:React.FC<CommentFormProps> = ( { replyingTo, replies, setBackendReplies, setReply, comment } ) => {
   
   // const user = useContext(CommentContext);
 
@@ -28,16 +29,18 @@ const CommentForm:React.FC<CommentFormProps> = ( { replyingTo, replies, setBacke
   
   const handleSubmit = ( e:FormEvent ) => {
       e.preventDefault();
-      addReply( id, content, replyingTo  ).then(data => setBackendReplies([...replies, data])
-      )
-      console.log(content);
-      console.log(replyingTo);
-      console.log(id);
-      
-      const hi = id + 1
-      setContent("");
-      setId(hi);
-      setReply(false);
+      if(!comment) {
+        addReply( id, content, replyingTo  ).then(data => setBackendReplies([...replies, data])
+        )
+        console.log(content);
+        console.log(replyingTo);
+        console.log(id);
+        
+        const hi = id + 1
+        setContent("");
+        setId(hi);
+        setReply(false);
+      }
   }
 
   

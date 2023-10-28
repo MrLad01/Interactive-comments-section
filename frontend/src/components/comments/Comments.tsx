@@ -3,6 +3,8 @@ import data from '../../assets/data.json'
 
 
 import Comment from './Comment';
+// import CommentForm from './CommentForm';
+import NewForm from './NewForm';
 
 
 
@@ -38,25 +40,27 @@ export interface Comment1 {
 const Comments: React.FC = ( ) => {
 
     const [ backendComments, setBackendComments ] = useState<Comment1[]>([]);
+    const [ reply, setReply ] = useState<boolean>(true);
 
 
 
     const comments = data.comments
 
     useEffect(() => {
-        setBackendComments(comments);
+        setBackendComments([...comments]);
     }, []);
     
       const cmmts = useMemo(() => {
-        return comments.sort((a, b) => b.score - a.score).map(comment => (
-            <Comment key={comment.id} comment={comment} />
+        return backendComments.sort((a, b) => b.score - a.score).map(comment => (
+            <Comment key={comment.id} comment={comment} parent = {backendComments} setParent = {setBackendComments}   />
         ));
     }, [backendComments]);
     
     return (
         <>
             {cmmts}
-            {/* <CommentForm /> */}
+            {/* {reply && <CommentForm  replyingTo = " "  replies = { backendComments } setBackendReplies = { setBackendComments } setReply = { setReply } comment = { true }  />} */}
+            { reply && <NewForm  replies = { backendComments } setBackendReplies = { setBackendComments } setReply = { setReply } /> }
         </>
     )
     }

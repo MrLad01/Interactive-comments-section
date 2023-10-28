@@ -1,15 +1,21 @@
-import React, {  useEffect, useState } from 'react'
+import React, {  useContext, useEffect, useState, SetStateAction } from 'react'
 
 import plusIcon from '../../assets/images/icon-plus.svg';
 import minusIcon from '../../assets/images/icon-minus.svg';
 import replyIcon from '../../assets/images/icon-reply.svg';
+import deleteIcon from '../../assets/images/icon-delete.svg';
+import editIcon from '../../assets/images/icon-edit.svg';
 
 import { Comment1 } from './Comments';
 import CommentForm from './CommentForm';
 import Reply from './Reply';
+import { CommentContext } from '../../App';
+import { deleteComment } from '../../helpers';
 
 interface CommentProps {
     comment: Comment1;
+    parent: Comment1[];
+    setParent: React.Dispatch<SetStateAction<Comment1[]>>;
 }
 
 export interface Reply1 {
@@ -27,15 +33,18 @@ export interface Reply1 {
         };
 }
 
-const Comment: React.FC<CommentProps> = ( { comment } ) => {
+const Comment: React.FC<CommentProps> = ( { comment, parent, setParent } ) => {
 
     const [ backendReplies, setBackendReplies ] = useState<Reply1[]>([])
 
     const [ upVote, setUpVote ] = useState<boolean>(false);
     const [ downVote, setDownVote ] = useState<boolean>(false); 
-
     const [ count, setCount ] = useState<number>(comment.score);
+    const [ editedContent, setEditedContent ] = useState<string>(comment.content)
+
     const [ reply, setReply ] = useState<boolean>(false);
+    const [ del, setDel ] = useState<boolean>(false);
+    const [ ed, setEd ] = useState<boolean>(false);
 
 
 
@@ -43,6 +52,7 @@ const Comment: React.FC<CommentProps> = ( { comment } ) => {
         setBackendReplies(comment.replies)
     }, [comment])
   
+    const user = useContext(CommentContext);
 
     
 
@@ -73,6 +83,17 @@ const Comment: React.FC<CommentProps> = ( { comment } ) => {
         else {
             setCount( count + 1 )
         }
+    }
+
+
+    const handleDelete = ( e:React.MouseEvent ) => {
+        e.preventDefault();
+        setDel(!del);
+        deleteComment(comment.id).then(() => {
+            const updatedReplies = parent.filter(reply => reply.id !== comment.id )
+            setParent(updatedReplies)
+        })
+
     }
 
 
@@ -115,19 +136,44 @@ const Comment: React.FC<CommentProps> = ( { comment } ) => {
                     <div className = 'flex justify-around items-center gap-4'>
                         <img src = {`../../src/assets/${comment.user.image.png}`}  alt = "" className = 'w-9 h-9' />
                         <h1 > { comment.user.username } </h1>
+                        { comment.user.username === user && <h2 className = 'bg-blue-900 text-white font-bold px-2 text-sm' > you </h2> }
                         <h2> { comment.createdAt } </h2>
                     </div>
 
-                    <button 
+                    { comment.user.username !== user  ? <button 
                         className = 'h-6 flex items-center justify-around p-2 gap-2'
                         onClick = { () => setReply(!reply) }
                     >
                         <img src = { replyIcon } alt = "" />
                         Reply
-                    </button>
+                    </button> :
+                        <div className = 'flex' >
+                            <button 
+                                className = 'h-6 flex items-center justify-around p-2 gap-2'
+                                onClick = {  handleDelete }
+                            >
+                                <img src = { deleteIcon } alt = "" />
+                                Delete
+                            </button> 
+                            <button 
+                                className = 'h-6 flex items-center justify-around p-2 gap-2'
+                                onClick = { () => setEd(!ed) }
+                            >
+                                <img src = { editIcon } alt = "" />
+                                Edit
+                            </button> 
+                        </div>
+                    }
                 </div>
 
-                <p> { comment.content } </p>
+                { !ed ? <p>  { editedContent } </p>:
+                <div className = 'flex flex-col gap-2' >
+                 <textarea name="" id="" value = { editedContent } onChange={(e) => setEditedContent(e.target.value) }  ></textarea> 
+                 <div className = 'flex justify-end w-full' >
+                     <button  className = ' w-fit text-white bg-slate-600 p-3  ' onClick = {() => setEd(false) } > UPDATE </button>
+                 </div>
+                </div>
+                }
             </div>
         </div>
         <div className = 'flex'>
@@ -143,7 +189,7 @@ const Comment: React.FC<CommentProps> = ( { comment } ) => {
                 }
             </div>
         </div>
-        {reply && <CommentForm  replyingTo = { comment.user.username }  replies = { backendReplies } setBackendReplies = { setBackendReplies } setReply = { setReply }  />}
+        {reply && <CommentForm  replyingTo = { comment.user.username }  replies = { backendReplies } setBackendReplies = { setBackendReplies } setReply = { setReply }  comment = { false }  />}
     </>
   )
 }

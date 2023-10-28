@@ -10,6 +10,7 @@ export const CommentContext = createContext<string>("");
 
 
 function App() {
+  
   const currentUsername = data.currentUser.username
 
 

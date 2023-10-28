@@ -27,6 +27,7 @@ const Reply: React.FC<ReplyProps> = ( { replies, parent, setParent } ) => {
     const [ upVote, setUpVote ] = useState<boolean>(false);
     const [ downVote, setDownVote ] = useState<boolean>(false); 
     const [ count, setCount ] = useState<number>(replies.score);
+    const [ editedContent, setEditedContent ] = useState<string>(replies.content);
 
     const [ reply, setReply ] = useState<boolean>(false);
     const [ del, setDel ] = useState<boolean>(false);
@@ -141,10 +142,17 @@ const Reply: React.FC<ReplyProps> = ( { replies, parent, setParent } ) => {
                     }
                 </div>
 
-                <p> <span className = ' text-blue-800 font-bold ' > @{ replies.replyingTo } </span> { replies.content } </p>
+                { !ed ? <p> <span className = ' text-blue-800 font-bold ' > @{ replies.replyingTo } </span> { editedContent } </p>:
+                <div className = 'flex flex-col gap-2' >
+                 <textarea name="" id="" value = { editedContent } onChange={(e) => setEditedContent(e.target.value) }  ></textarea> 
+                 <div className = 'flex justify-end w-full' >
+                     <button  className = ' w-fit text-white bg-slate-600 p-3  ' onClick = {() => setEd(false) } > UPDATE </button>
+                 </div>
+                </div>
+                }
             </div>
         </div>
-        {reply && <CommentForm replyingTo = { replies.user.username } replies = { parent } setBackendReplies = { setParent } setReply = { setReply }  />}
+        {reply && <CommentForm replyingTo = { replies.user.username } replies = { parent } setBackendReplies = { setParent } setReply = { setReply } comment = { false } />}
         {
             del && 
             <>

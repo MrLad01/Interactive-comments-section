@@ -70,3 +70,43 @@ export async function editReply(id: number) {
     return  data1;
     
 } 
+
+export async function addComment(id: number, content:string ) {
+  const data1 = {
+    "id": id,
+    "content": content,
+    "createdAt": "1 month ago",
+    "score": 0,
+    "user": {
+      "image": { 
+        "png": png,
+        "webp": webp
+      },
+      "username": user
+    },
+    "replies": []
+  }
+
+  return  data1;
+  
+} 
+
+export async function deleteComment(id: number ) {
+  const data1 = {
+    "id": id,
+    "content": String,
+    "createdAt": "1 month ago",
+    "score": 0,
+    "user": {
+      "image": { 
+        "png": png,
+        "webp": webp
+      },
+      "username": user
+    },
+    "replies": []
+  }
+
+  return  data1;
+  
+} 

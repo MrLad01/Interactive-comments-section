@@ -5,6 +5,7 @@ export default {
     './src/components/comments/Comments.tsx',
     './src/components/comments/Comment.tsx',
     './src/components/comments/CommentForm.tsx',
+    './src/components/comments/NewComment.tsx',
     './src/components/comments/Reply.tsx'
   ],
   theme: {
