@@ -58,7 +58,7 @@ const NewForm:React.FC<FormProps> = ( { replies, setBackendReplies, setReply } )
         className = 'py-1 px-8 bg-slate-400 h-11 rounded-lg ' 
         onClick = { handleSubmit } 
       >
-         REPLY 
+         COMMENT 
       </button>
       
   </form>

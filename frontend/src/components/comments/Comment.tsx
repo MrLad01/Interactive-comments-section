@@ -137,12 +137,12 @@ const Comment: React.FC<CommentProps> = ( { comment, parent, setParent } ) => {
                         src = { plusIcon } 
                         alt = "plus" 
                         style = {{ filter: !upVote ? 'brightness(0.7)' : 'brightness(1)', }}  
-                        className = 'p-1'
+                        className = 'p-1 saturate-200 contrast-100'
                     />
                     <h2>  </h2>
                 </button>
 
-                <h1> { count > 0 ? count : 0 } </h1>
+                <h1 className = ' font-bold text-moderate-blue ' > { count > 0 ? count : 0 } </h1>
 
                 <button
                         disabled = { downVote || count == 0 }
@@ -152,40 +152,41 @@ const Comment: React.FC<CommentProps> = ( { comment, parent, setParent } ) => {
                         src = { minusIcon } 
                         alt = "minus"
                         style = {{ filter: !downVote ? 'brightness(0.7)' : 'brightness(1)', }}
-                        className = 'p-1'  
+                        className = 'p-1 saturate-200 contrast-100'  
                     />
                     <h2>  </h2>
                 </button>
             </div>
 
-            <div className = 'flex flex-col gap-2 h-32 w-full ' >
+            <div className = 'flex flex-col gap-2 h-fit w-full pb-4 ' >
                 <div className = 'flex justify-between w-full  ' >
                     <div className = 'flex justify-around items-center gap-4'>
                         <img 
                             src = { `../../src/assets/${comment.user.image.png}` }  
                             alt = "" 
-                            className = 'w-9 h-9' 
+                            className = 'w-8 h-8' 
                         />
 
-                        <h1 > { comment.user.username } </h1>
+                        <h1 className = 'font-bold' > { comment.user.username } </h1>
 
                         { comment.user.username === user && 
                         
-                            <h2 className = 'bg-blue-900 text-white font-bold px-2 text-sm' >
+                            <h2 className = 'bg-moderate-blue text-white font-bold px-2 text-sm rounded-sm' >
                                  you 
                             </h2> 
                         }
 
-                        <h2> { comment.createdAt } </h2>
+                        <h2 className = 'font-normal opacity-70' > { comment.createdAt } </h2>
                     </div>
 
                     { 
                         comment.user.username !== user  ? 
                         
                             <button 
-                                className = 'h-6 flex items-center justify-around p-2 gap-2'
+                                className = {`h-6 flex items-center justify-around p-2 gap-2 text-moderate-blue font-medium 
+                                ${reply && 'opacity-50'}  `}
                                 onClick = { () => setReply( !reply ) }
-                             >
+                            >
                             <img src = { replyIcon } alt = "" />
                                  Reply
                             </button> 
@@ -194,14 +195,16 @@ const Comment: React.FC<CommentProps> = ( { comment, parent, setParent } ) => {
                             <div className = 'flex' >
                             
                             <button 
-                                className = 'h-6 flex items-center justify-around p-2 gap-2'
+                                className = {`h-6 flex items-center justify-around p-2 gap-2 text-soft-red font-medium
+                                ${del && 'opacity-50'}`}
                                 onClick = {  handleDelete }
                             >
                                 <img src = { deleteIcon } alt = "" />
                                 Delete
                             </button> 
                             <button 
-                                className = 'h-6 flex items-center justify-around p-2 gap-2'
+                                className = {`h-6 flex items-center justify-around p-2 gap-2 text-moderate-blue font-medium
+                                ${ed && 'opacity-50'}`}
                                 onClick = { () => setEd(!ed) }
                             >
                                 <img src = { editIcon } alt = "" />
@@ -213,16 +216,18 @@ const Comment: React.FC<CommentProps> = ( { comment, parent, setParent } ) => {
 
                 { 
                     !ed ? 
-                            <p>  { editedContent } </p>
+                            <p className = 'text-base opacity-80 font-thin ' >  { editedContent } </p>
                         :
-                            <div className = 'flex flex-col gap-2' >
+                            <div className = 'flex flex-col gap-4' >
                                 <textarea 
                                     name="" 
                                     id="" 
-                                    value = { editedContent } onChange = { ( e ) => setEditedContent( e.target.value ) }  ></textarea> 
+                                    value = { editedContent }
+                                    className = ' cursor-pointer outline-2 border border-light-grayish-blue rounded-md p-2 outline-none' 
+                                    onChange = { ( e ) => setEditedContent( e.target.value ) }  ></textarea> 
                                 <div className = 'flex justify-end w-full' >
                                     <button  
-                                        className = ' w-fit text-white bg-slate-600 p-3  ' 
+                                        className = ' w-fit text-white bg-moderate-blue rounded-md py-3 px-4   ' 
                                         onClick = { () => setEd( false ) } 
                                     >
                                         UPDATE 
@@ -236,7 +241,7 @@ const Comment: React.FC<CommentProps> = ( { comment, parent, setParent } ) => {
 
         <div className = 'flex'>
             
-            <div className = 'w-1 mx-12 mb-4 bg-slate-500'></div>
+            <div className = 'w-[6px] mx-12 mb-4 bg-light-gray'></div>
             
             <div className = 'grid' >
               
