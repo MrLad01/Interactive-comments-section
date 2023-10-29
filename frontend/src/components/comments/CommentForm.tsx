@@ -28,13 +28,17 @@ const CommentForm:React.FC<CommentFormProps> = ( { replyingTo, replies, setBacke
   
       if( !comment ) {
         addReply( id, content, replyingTo  )
-            .then( data => setBackendReplies( [...replies, data ] ) )
-        
-        const hi = id + 1
-
-        setContent("");
-        setId( hi );
-        setReply( false );
+            .then( data => {
+                            setBackendReplies( [...replies, data ] );
+                            localStorage.setItem('replies', JSON.stringify(replies));
+                            const hi = id + 1
+                    
+                            setContent("");
+                            setId( hi );
+                            setReply( false );
+                          } 
+                  )
+            .catch(error => { console.log(error)})
       }
   }
 

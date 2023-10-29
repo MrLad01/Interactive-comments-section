@@ -23,14 +23,23 @@ const NewForm:React.FC<FormProps> = ( { replies, setBackendReplies, setReply } )
   
   const handleSubmit = ( e:FormEvent ) => {
     e.preventDefault();
-    addComment( id, content ).then( data => setBackendReplies( [ ...replies, data ] )
-        )
+    addComment( id, content )
+        .then( data => {
+                          setBackendReplies( [ ...replies, data ] )
+                          // Save the updated comments to local storage
+                          localStorage.setItem('comments', JSON.stringify(replies));
+                          const hi = id + 1
+                          setContent("");
+                          setId(hi);
+                          setReply(true);  
+                       })
+                       .catch(error => {
+                        // Display an error message to the user.
+                        console.log(error);
+                      });
         
-    const hi = id + 1
-    setContent("");
-    setId(hi);
-    setReply(true);  
-  }
+      }
+      
 
 
 

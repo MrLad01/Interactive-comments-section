@@ -37,16 +37,14 @@ export interface Comment1 {
 
 const Comments: React.FC = ( ) => {
 
-    const [ backendComments, setBackendComments ] = useState<Comment1[]>( [] );
+    const comments = data.comments
+    const [ backendComments, setBackendComments ] = useState<Comment1[]>( [...comments] );
     const [ reply, setReply ] = useState<boolean>(true);
 
-
-    const comments = data.comments
-
-
-    useEffect( () => {
-        setBackendComments([ ...comments ] );
-    }, [] );
+    useEffect(() => {
+        localStorage.setItem('comments', JSON.stringify(backendComments));
+    }, [backendComments]);
+        
     
     const cmmts = useMemo(() => 
     {

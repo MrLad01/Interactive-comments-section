@@ -42,7 +42,7 @@ export interface Reply1 {
 
 const Comment: React.FC<CommentProps> = ( { comment, parent, setParent } ) => {
 
-    const [ backendReplies, setBackendReplies ] = useState<Reply1[]>([])
+    const [ backendReplies, setBackendReplies ] = useState<Reply1[]>(comment.replies)
 
     const [ upVote, setUpVote ] = useState<boolean>(false);
     const [ downVote, setDownVote ] = useState<boolean>(false); 
@@ -55,11 +55,11 @@ const Comment: React.FC<CommentProps> = ( { comment, parent, setParent } ) => {
 
 
 
-    useEffect( () => {
-        setBackendReplies( comment.replies )
-    }, [ comment ] )
-  
-    
+    useEffect(() => {
+        localStorage.setItem('replies', JSON.stringify(backendReplies));
+    }, [ backendReplies ]);
+        
+
     const user = useContext( CommentContext );
     
 
