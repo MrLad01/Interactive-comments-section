@@ -65,7 +65,7 @@ const NewForm:React.FC<FormProps> = ( { replies, setBackendReplies, setReply } )
           
       </form>
       <form 
-          className = 'w-full h-fit bg-white p-5 rounded-lg flex flex-col gap-4 my-3 justify-around md:max-2xl:hidden ' 
+          className = 'w-full h-fit bg-white p-5 rounded-lg flex flex-col gap-4 my-3 justify-around md:max-2xl:hidden text-sm ' 
           id = 'comments-form' 
           name = 'comments-form'  
         >
