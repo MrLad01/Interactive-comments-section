@@ -16,9 +16,9 @@ function App() {
 
   return (
     <CommentContext.Provider value = { currentUsername }>
-      <main className = 'h-fit w-full flex justify-center bg-vlight-gray ' >
+      <main className = 'h-fit w-full flex justify-center bg-vlight-gray   ' >
        
-        <div className = 'md:max-2xl:w-7/12 xs:max-md:w-screen py-10'>
+        <div className = 'md:max-2xl:w-7/12 xs:max-md:w-full py-10 xs:max-md:px-4 xs:max-sm:scale-95 xs:max-md:py-5'>
           <Comments  />
         </div>
       

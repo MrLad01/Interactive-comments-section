@@ -94,7 +94,7 @@ const Reply: React.FC<ReplyProps> = ( { replies, parent, setParent } ) => {
             className = 'w-full h-fit bg-white p-5 pb-0 rounded-lg flex gap-6 mb-4 ' 
             key = { replies.id } 
         >
-            <div className = 'flex flex-col justify-around gap-3 items-center p-3 bg-light-grayish-blue rounded-2xl bg-opacity-30 h-24'>        
+            <div className = 'flex flex-col justify-around gap-3 items-center p-3 bg-light-grayish-blue rounded-2xl bg-opacity-30 h-24 xs:max-md:hidden '>        
                <button 
                     disabled = { upVote }
                     onClick = { handleUpVote }
@@ -137,7 +137,7 @@ const Reply: React.FC<ReplyProps> = ( { replies, parent, setParent } ) => {
                             replies.user.username === user && 
                                 <h2 className = 'bg-moderate-blue text-white font-bold px-2 text-sm rounded-sm ' > you </h2> 
                         }
-                        <h2 className = 'font-normal opacity-70'> { replies.createdAt } </h2>
+                        <h2 className = 'font-normal opacity-70 text-sm'> { replies.createdAt } </h2>
                     </div>
 
                     {   
@@ -145,7 +145,7 @@ const Reply: React.FC<ReplyProps> = ( { replies, parent, setParent } ) => {
                         
                         <button 
                             className = {`h-6 flex items-center justify-around p-2 gap-2 text-moderate-blue font-medium
-                            ${reply && 'opacity-50'}  `}
+                            ${reply && 'opacity-50'} xs:max-md:hidden  `}
                             onClick = { () => setReply( !reply ) }
                         >
                             <img src = { replyIcon } alt = "" />
@@ -154,7 +154,7 @@ const Reply: React.FC<ReplyProps> = ( { replies, parent, setParent } ) => {
                             
                             :
 
-                        <div className = 'flex' >
+                        <div className = 'flex xs:max-md:hidden ' >
                             <button 
                                 className = {`h-6 flex items-center justify-around p-2 gap-2 text-soft-red font-medium
                                 ${del && 'opacity-50'}`}
@@ -201,6 +201,71 @@ const Reply: React.FC<ReplyProps> = ( { replies, parent, setParent } ) => {
                           </div>
                         </div>
                     }
+                    <div className = 'md:max-2xl:hidden flex justify-between items-center text-sm ' >
+                       <div className = 'flex justify-around gap-3 items-center p-1 bg-light-grayish-blue rounded-lg bg-opacity-30 h-10 '>        
+                           <button 
+                              disabled = { upVote }
+                              onClick = { handleUpVote }
+                              >
+                               <img 
+                                  src = { plusIcon } 
+                                  alt = "plus" 
+                                  style = {{ filter: !upVote ? 'brightness(0.7)' : 'brightness(1)', }}  
+                                    className = 'p-1 saturate-200 contrast-100'
+                                  />
+                                 <h2>  </h2>
+                             </button>
+
+                              <h1 className = ' font-bold text-moderate-blue '> { count > 0 ? count : 0 } </h1>
+
+                             <button
+                               disabled = { downVote || count == 0 }
+                                onClick = { handleDownVote }
+                            >
+                            <img
+                                src = { minusIcon } 
+                                alt = "minus"
+                                style = {{ filter: !downVote ? 'brightness(0.7)' : 'brightness(1)', }}
+                                className = 'p-1 saturate-200 contrast-100'  
+                              />
+                             <h2>  </h2>
+                            </button>
+                        </div>
+
+                        {   
+                          replies.user.username !== user  ? 
+                        
+                          <button 
+                            className = {`h-6 flex items-center justify-around p-2 gap-2 text-moderate-blue font-medium
+                            ${reply && 'opacity-50'}  `}
+                            onClick = { () => setReply( !reply ) }
+                            >
+                             <img src = { replyIcon } alt = "" />
+                              Reply
+                          </button> 
+                            
+                            :
+
+                            <div className = 'flex ' >
+                             <button 
+                                 className = {`h-6 flex items-center justify-around p-2 gap-2 text-soft-red font-medium
+                                 ${del && 'opacity-50'}`}
+                                 onClick = { () => setDel(!del) }
+                                >
+                                    <img src = { deleteIcon } alt = "" />
+                                     Delete
+                                </button> 
+                             <button 
+                                    className = {`h-6 flex items-center justify-around p-2 gap-2 text-moderate-blue font-medium
+                                    ${ed && 'opacity-50'}`}
+                                    onClick = { () => setEd(!ed) }
+                             >
+                                <img src = { editIcon } alt = "" />
+                                Edit
+                            </button> 
+                        </div>
+                    }
+                   </div>
                 </div>
             </div>
         { 

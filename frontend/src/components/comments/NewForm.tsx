@@ -35,33 +35,61 @@ const NewForm:React.FC<FormProps> = ( { replies, setBackendReplies, setReply } )
 
 
   return (
-    <form 
-        className = 'w-full h-fit bg-white p-5 rounded-lg flex gap-4 my-3 justify-around' 
-        id = 'comments-form' 
-        name = 'comments-form'  
-    >
-      <img 
-        src = { `../../src/assets/${ userImage.png }` }  
-        alt = ""  
-        className = 'w-12 h-12' 
-      />
+    <>
+        <form 
+            className = 'w-full h-fit bg-white p-5 rounded-lg flex gap-4 my-3 justify-around xs:max-md:hidden ' 
+            id = 'comments-form' 
+            name = 'comments-form'  
+        >
+          <img 
+            src = { `../../src/assets/${ userImage.png }` }  
+            alt = ""  
+            className = 'w-12 h-12' 
+          />
 
-      <textarea 
-        name = "" 
-        id = "" 
-        className = 'w-full h-28 py-3 px-6 outline-1 border-2 rounded-lg' 
-        value = { content }  
-        onChange = { (e) => setContent( e.target.value ) }  
-      ></textarea>
+          <textarea 
+            name = "" 
+            id = "" 
+            className = 'w-full h-28 py-3 px-6 outline-1 border-2 rounded-lg' 
+            value = { content }  
+            onChange = { (e) => setContent( e.target.value ) }
+            placeholder = 'Add Comment...'  
+          ></textarea>
 
-      <button 
-        className = 'h-12 text-white bg-moderate-blue py-3 px-6  rounded-lg ' 
-        onClick = { handleSubmit } 
-      >
-         COMMENT 
-      </button>
-      
-  </form>
+          <button 
+            className = 'h-12 text-white bg-moderate-blue py-3 px-6  rounded-lg ' 
+            onClick = { handleSubmit } 
+          >
+            SEND 
+          </button>
+          
+      </form>
+      <form 
+          className = 'w-full h-fit bg-white p-5 rounded-lg flex flex-col gap-4 my-3 justify-around md:max-2xl:hidden ' 
+          id = 'comments-form' 
+          name = 'comments-form'  
+        >
+          <textarea 
+            name = "" 
+            id = "" 
+            className = 'w-full h-28 py-3 px-6 outline-1 border-2 rounded-lg' 
+            value = { content }  
+            onChange = { ( e ) => setContent( e.target.value ) }
+            placeholder = 'Add Comment...'  
+          ></textarea>
+          <div className = 'flex justify-between' >
+            <img 
+              src = { `../../src/assets/${ userImage.png }` }  
+              alt = ""  
+              className = 'w-12 h-12' 
+            />
+            <button 
+              className = 'text-white bg-moderate-blue py-3 px-6  h-12 rounded-lg ' 
+              onClick = { handleSubmit } 
+            > SEND </button>
+          </div>
+      </form>
+    </>
   )
 }
 
