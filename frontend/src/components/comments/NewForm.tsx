@@ -55,7 +55,7 @@ const NewForm:React.FC<FormProps> = ( { replies, setBackendReplies, setReply } )
       ></textarea>
 
       <button 
-        className = 'py-1 px-8 bg-slate-400 h-11 rounded-lg ' 
+        className = 'h-12 text-white bg-moderate-blue py-3 px-6  rounded-lg ' 
         onClick = { handleSubmit } 
       >
          COMMENT 

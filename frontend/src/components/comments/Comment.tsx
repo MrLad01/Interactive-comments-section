@@ -241,7 +241,7 @@ const Comment: React.FC<CommentProps> = ( { comment, parent, setParent } ) => {
 
         <div className = 'flex'>
             
-            <div className = 'w-[6px] mx-12 mb-4 bg-light-gray'></div>
+            <div className = 'w-[5px] mx-12 mb-4 bg-light-gray py-1'></div>
             
             <div className = 'grid' >
               

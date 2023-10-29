@@ -58,7 +58,7 @@ const CommentForm:React.FC<CommentFormProps> = ( { replyingTo, replies, setBacke
           onChange = { ( e ) => setContent( e.target.value ) }  
         ></textarea>
         <button 
-          className = 'py-1 px-8 bg-slate-400 h-11 rounded-lg ' 
+          className = 'text-white bg-moderate-blue py-3 px-6  h-12 rounded-lg ' 
           onClick = { handleSubmit } 
         > REPLY </button>
     </form>
