@@ -281,19 +281,19 @@ const Reply: React.FC<ReplyProps> = ( { replies, parent, setParent } ) => {
         {
             del && 
                     <>
-                        <div className = 'absolute top-0 left-0 w-full h-[125vh] z-10  overflow-hidden  bg-slate-600 opacity-20'>
+                        <div className = 'absolute top-0 left-0 w-full h-full z-10  overflow-hidden  bg-black opacity-50'>
                         </div>
-                        <div className = 'absolute top-0 left-0  w-full h-[125vh] z-20  flex  items-center justify-center ' >
-                            <div className = 'bg-white w-1/4 h-1/3 rounded-md flex flex-col justify-around p-8 items-start ' >
-                                <h2> Delete Comment </h2>
-                                <p> Are you sure you want to delete this comment? This will remove the comment and can't be undone. </p>
+                        <div className = 'absolute top-0 left-0  w-full h-full z-20  flex  items-center justify-center p-4' >
+                            <div className = 'bg-white w-[26%] h-2/5 rounded-md flex flex-col justify-around p-8 items-start xs:max-md:w-full xs:max-md:h-1/6 ' >
+                                <h2 className = 'font-bold text-xl text-grayish-blue ' > Delete Comment </h2>
+                                <p className = 'text-grayish-blue'> Are you sure you want to delete this comment? This will remove the comment and can't be undone. </p>
                                   <div className = "flex gap-2">
                                     <button 
-                                        className = 'bg-slate-600 text-white rounded-md px-5 py-2'
+                                        className = 'bg-grayish-blue text-white rounded-md px-5 py-2'
                                          onClick = { () => setDel( !del )}
                                     > NO, CANCEL </button>
                                     <button 
-                                        className = 'text-white bg-red-600 rounded-md px-5 py-2'
+                                        className = 'text-white bg-soft-red rounded-md px-5 py-2'
                                         onClick = { handleDelete } 
                                     > YES, DELETE </button>
                             </div>
