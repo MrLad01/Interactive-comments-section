@@ -289,11 +289,11 @@ const Reply: React.FC<ReplyProps> = ( { replies, parent, setParent } ) => {
                                 <p className = 'text-grayish-blue'> Are you sure you want to delete this comment? This will remove the comment and can't be undone. </p>
                                   <div className = "flex gap-2">
                                     <button 
-                                        className = 'bg-grayish-blue text-white rounded-md px-5 py-2'
+                                        className = 'bg-grayish-blue text-white rounded-md px-4 py-3 text-base '
                                          onClick = { () => setDel( !del )}
                                     > NO, CANCEL </button>
                                     <button 
-                                        className = 'text-white bg-soft-red rounded-md px-5 py-2'
+                                        className = 'text-white bg-soft-red rounded-md px-4 py-3 text-base '
                                         onClick = { handleDelete } 
                                     > YES, DELETE </button>
                             </div>
