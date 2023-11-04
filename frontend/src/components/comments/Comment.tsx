@@ -284,14 +284,16 @@ const Comment: React.FC<CommentProps> = ( { comment, parent, setParent } ) => {
                             :
 
                             <div className = 'flex ' >
-                             <button 
-                                 className = {`h-6 flex items-center justify-around p-2 gap-2 text-soft-red font-medium
-                                 ${del && 'opacity-50'}`}
-                                 onClick = { () => setDel(!del) }
-                                >
-                                    <img src = { deleteIcon } alt = "" />
-                                     Delete
+                            <a href = "#delete">
+                                <button 
+                                    className = {`h-6 flex items-center justify-around p-2 gap-2 text-soft-red font-medium
+                                    ${del && 'opacity-50'}`}
+                                    onClick = { () => setDel(!del) }
+                                    >
+                                        <img src = { deleteIcon } alt = "" />
+                                        Delete
                                 </button> 
+                            </a>
                              <button 
                                     className = {`h-6 flex items-center justify-around p-2 gap-2 text-moderate-blue font-medium
                                     ${ed && 'opacity-50'}`}
