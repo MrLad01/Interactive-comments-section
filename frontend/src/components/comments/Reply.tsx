@@ -155,14 +155,16 @@ const Reply: React.FC<ReplyProps> = ( { replies, parent, setParent } ) => {
                             :
 
                         <div className = 'flex xs:max-md:hidden ' >
-                            <button 
-                                className = {`h-6 flex items-center justify-around p-2 gap-2 text-soft-red font-medium
-                                ${del && 'opacity-50'}`}
-                                onClick = { () => setDel(!del) }
-                            >
-                                <img src = { deleteIcon } alt = "" />
-                                Delete
-                            </button> 
+                            <a href = "#delete ">
+                                <button 
+                                    className = {`h-6 flex items-center justify-around p-2 gap-2 text-soft-red font-medium
+                                    ${del && 'opacity-50'}`}
+                                    onClick = { () => setDel(!del) }
+                                >
+                                    <img src = { deleteIcon } alt = "" />
+                                    Delete
+                                </button> 
+                            </a>
                             <button 
                                 className = {`h-6 flex items-center justify-around p-2 gap-2 text-moderate-blue font-medium
                                 ${ed && 'opacity-50'}`}
@@ -247,14 +249,16 @@ const Reply: React.FC<ReplyProps> = ( { replies, parent, setParent } ) => {
                             :
 
                             <div className = 'flex ' >
-                             <button 
-                                 className = {`h-6 flex items-center justify-around p-2 gap-2 text-soft-red font-medium
-                                 ${del && 'opacity-50'}`}
-                                 onClick = { () => setDel(!del) }
-                                >
-                                    <img src = { deleteIcon } alt = "" />
-                                     Delete
-                                </button> 
+                            <a href = "#delete">
+                                <button 
+                                    className = {`h-6 flex items-center justify-around p-2 gap-2 text-soft-red font-medium
+                                    ${del && 'opacity-50'}`}
+                                    onClick = { () => setDel(!del) }
+                                    >
+                                        <img src = { deleteIcon } alt = "" />
+                                        Delete
+                                    </button> 
+                            </a>
                              <button 
                                     className = {`h-6 flex items-center justify-around p-2 gap-2 text-moderate-blue font-medium
                                     ${ed && 'opacity-50'}`}
@@ -283,7 +287,7 @@ const Reply: React.FC<ReplyProps> = ( { replies, parent, setParent } ) => {
                     <>
                         <div className = 'absolute top-0 left-0 w-full h-full z-10  overflow-hidden  bg-black opacity-50'>
                         </div>
-                        <div className = 'absolute top-0 left-0  w-full h-full z-20  flex  items-center justify-center p-4' >
+                        <div className = 'absolute top-0 left-0  w-full h-full z-20  flex  items-center justify-center p-4' id = 'delete'  >
                             <div className = 'bg-white w-[26%] h-2/5 rounded-md flex flex-col justify-around p-8 items-start xs:max-md:w-full xs:max-md:h-1/6 ' >
                                 <h2 className = 'font-bold text-xl text-grayish-blue ' > Delete Comment </h2>
                                 <p className = 'text-grayish-blue'> Are you sure you want to delete this comment? This will remove the comment and can't be undone. </p>
