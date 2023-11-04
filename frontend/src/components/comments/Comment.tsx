@@ -197,7 +197,7 @@ const Comment: React.FC<CommentProps> = ( { comment, parent, setParent } ) => {
                             <button 
                                 className = {`h-6 flex items-center justify-around p-2 gap-2 text-soft-red font-medium
                                 ${del && 'opacity-50'}`}
-                                onClick = {  handleDelete }
+                                onClick = { () => setDel(!del)  }
                             >
                                 <img src = { deleteIcon } alt = "" />
                                 Delete
@@ -284,7 +284,7 @@ const Comment: React.FC<CommentProps> = ( { comment, parent, setParent } ) => {
                              <button 
                                  className = {`h-6 flex items-center justify-around p-2 gap-2 text-soft-red font-medium
                                  ${del && 'opacity-50'}`}
-                                 onClick = {  handleDelete }
+                                 onClick = { () => setDel(!del) }
                                 >
                                     <img src = { deleteIcon } alt = "" />
                                      Delete
@@ -331,6 +331,31 @@ const Comment: React.FC<CommentProps> = ( { comment, parent, setParent } ) => {
                     setReply = { setReply }  
                     comment = { false }  
                 />
+        }
+
+        {
+            del && 
+                    <>
+                        <div className = 'absolute top-0 left-0 w-full h-full z-10  overflow-hidden  bg-black opacity-50'>
+                        </div>
+                        <div className = 'absolute top-0 left-0  w-full h-full z-20  flex  items-center justify-center p-4' >
+                            <div className = 'bg-white w-[26%] h-2/5 rounded-md flex flex-col justify-around p-8 items-start xs:max-md:w-full xs:max-md:h-1/6 ' >
+                                <h2 className = 'font-bold text-xl text-grayish-blue ' > Delete Comment </h2>
+                                <p className = 'text-grayish-blue'> Are you sure you want to delete this comment? This will remove the comment and can't be undone. </p>
+                                  <div className = "flex gap-2" onAbort={() => setDel(!del)} >
+                                    <button 
+                                        className = 'bg-grayish-blue text-white rounded-md px-4 py-3 text-base '
+                                         onClick = { () => setDel( !del )
+                                        }
+                                    > NO, CANCEL </button>
+                                    <button 
+                                        className = 'text-white bg-soft-red rounded-md px-4 py-3 text-base '
+                                        onClick = { handleDelete } 
+                                    > YES, DELETE </button>
+                            </div>
+                        </div>
+                 </div>
+            </>
         }
     </>
   )
