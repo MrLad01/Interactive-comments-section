@@ -47,7 +47,7 @@ const CommentForm:React.FC<CommentFormProps> = ( { replyingTo, replies, setBacke
     <>
       <form 
           className = 'w-full h-fit bg-white p-5 rounded-lg flex gap-4 my-3 justify-around xs:max-md:hidden ' 
-          id = 'comments-form' 
+          id = 'reply-form' 
           name = 'comments-form'  
         >
           <img 

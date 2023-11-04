@@ -105,7 +105,6 @@ const Reply: React.FC<ReplyProps> = ( { replies, parent, setParent } ) => {
                         style = {{ filter: !upVote ? 'brightness(0.7)' : 'brightness(1)', }}  
                         className = 'p-1 saturate-200 contrast-100'
                     />
-                    <h2>  </h2>
                 </button>
 
                 <h1 className = ' font-bold text-moderate-blue '> { count > 0 ? count : 0 } </h1>
@@ -120,7 +119,6 @@ const Reply: React.FC<ReplyProps> = ( { replies, parent, setParent } ) => {
                         style = {{ filter: !downVote ? 'brightness(0.7)' : 'brightness(1)', }}
                         className = 'p-1 saturate-200 contrast-100'  
                     />
-                    <h2>  </h2>
                 </button>
             </div>
 
@@ -155,16 +153,16 @@ const Reply: React.FC<ReplyProps> = ( { replies, parent, setParent } ) => {
                             :
 
                         <div className = 'flex xs:max-md:hidden ' >
-                            <a href = "#delete ">
                                 <button 
                                     className = {`h-6 flex items-center justify-around p-2 gap-2 text-soft-red font-medium
                                     ${del && 'opacity-50'}`}
                                     onClick = { () => setDel(!del) }
                                 >
-                                    <img src = { deleteIcon } alt = "" />
-                                    Delete
+                                    <a href = "#delete ">
+                                        <img src = { deleteIcon } alt = "" />
+                                            Delete
+                                    </a>
                                 </button> 
-                            </a>
                             <button 
                                 className = {`h-6 flex items-center justify-around p-2 gap-2 text-moderate-blue font-medium
                                 ${ed && 'opacity-50'}`}
@@ -215,7 +213,6 @@ const Reply: React.FC<ReplyProps> = ( { replies, parent, setParent } ) => {
                                   style = {{ filter: !upVote ? 'brightness(0.7)' : 'brightness(1)', }}  
                                     className = 'p-1 saturate-200 contrast-100'
                                   />
-                                 <h2>  </h2>
                              </button>
 
                               <h1 className = ' font-bold text-moderate-blue '> { count > 0 ? count : 0 } </h1>
@@ -230,7 +227,6 @@ const Reply: React.FC<ReplyProps> = ( { replies, parent, setParent } ) => {
                                 style = {{ filter: !downVote ? 'brightness(0.7)' : 'brightness(1)', }}
                                 className = 'p-1 saturate-200 contrast-100'  
                               />
-                             <h2>  </h2>
                             </button>
                         </div>
 
@@ -249,16 +245,16 @@ const Reply: React.FC<ReplyProps> = ( { replies, parent, setParent } ) => {
                             :
 
                             <div className = 'flex ' >
-                            <a href = "#delete">
                                 <button 
                                     className = {`h-6 flex items-center justify-around p-2 gap-2 text-soft-red font-medium
                                     ${del && 'opacity-50'}`}
                                     onClick = { () => setDel(!del) }
                                     >
-                                        <img src = { deleteIcon } alt = "" />
-                                        Delete
+                                        <a href = "#delete">
+                                            <img src = { deleteIcon } alt = "" />
+                                                Delete
+                                        </a>
                                     </button> 
-                            </a>
                              <button 
                                     className = {`h-6 flex items-center justify-around p-2 gap-2 text-moderate-blue font-medium
                                     ${ed && 'opacity-50'}`}

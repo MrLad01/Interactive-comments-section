@@ -141,7 +141,6 @@ const Comment: React.FC<CommentProps> = ( { comment, parent, setParent } ) => {
                         style = {{ filter: !upVote ? 'brightness(0.7)' : 'brightness(1)', }}  
                         className = 'p-1 saturate-200 contrast-100'
                     />
-                    <h2>  </h2>
                 </button>
 
                 <h1 className = ' font-bold text-moderate-blue ' > { count > 0 ? count : 0 } </h1>
@@ -156,7 +155,6 @@ const Comment: React.FC<CommentProps> = ( { comment, parent, setParent } ) => {
                         style = {{ filter: !downVote ? 'brightness(0.7)' : 'brightness(1)', }}
                         className = 'p-1 saturate-200 contrast-100'  
                     />
-                    <h2>  </h2>
                 </button>
             </div>
 
@@ -253,7 +251,6 @@ const Comment: React.FC<CommentProps> = ( { comment, parent, setParent } ) => {
                                   style = {{ filter: !upVote ? 'brightness(0.7)' : 'brightness(1)', }}  
                                     className = 'p-1 saturate-200 contrast-100'
                                   />
-                                 <h2>  </h2>
                              </button>
 
                               <h1 className = ' font-bold text-moderate-blue '> { count > 0 ? count : 0 } </h1>
@@ -268,7 +265,6 @@ const Comment: React.FC<CommentProps> = ( { comment, parent, setParent } ) => {
                                 style = {{ filter: !downVote ? 'brightness(0.7)' : 'brightness(1)', }}
                                 className = 'p-1 saturate-200 contrast-100'  
                               />
-                             <h2>  </h2>
                             </button>
                         </div>
 
@@ -351,14 +347,13 @@ const Comment: React.FC<CommentProps> = ( { comment, parent, setParent } ) => {
                                 <h2 className = 'font-bold text-xl text-grayish-blue ' > Delete Comment </h2>
                                 <p className = 'text-grayish-blue'> Are you sure you want to delete this comment? This will remove the comment and can't be undone. </p>
                                   <div className = "flex gap-2" onAbort={() => setDel(!del)} >
-                                    <a 
+                                    <button 
                                         className = 'bg-grayish-blue text-white rounded-md px-4 py-3 text-base '
                                         onClick = { () => {
                                                             setDel( !del )
                                                             }
                                                     }
-                                        href = "/"
-                                    > NO, CANCEL </a>
+                                    > NO, CANCEL </button>
                                     <button 
                                         className = 'text-white bg-soft-red rounded-md px-4 py-3 text-base '
                                         onClick = { handleDelete }
