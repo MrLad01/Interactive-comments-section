@@ -52,13 +52,13 @@ const NewForm:React.FC<FormProps> = ( { replies, setBackendReplies, setReply } )
         >
           <img 
             src = { `../../src/assets/${ userImage.png }` }  
-            alt = ""  
+            alt = "user"  
             className = 'w-12 h-12' 
           />
 
           <textarea 
-            name = "" 
-            id = "" 
+            name = "comment" 
+            id = "comment1" 
             className = 'w-full h-28 py-3 px-6 outline-1 border-2 rounded-lg' 
             value = { content }  
             onChange = { (e) => setContent( e.target.value ) }
@@ -79,8 +79,8 @@ const NewForm:React.FC<FormProps> = ( { replies, setBackendReplies, setReply } )
           name = 'comments-form'  
         >
           <textarea 
-            name = "" 
-            id = "" 
+            name = "comment" 
+            id = "comment2" 
             className = 'w-full h-28 py-3 px-6 outline-1 border-2 rounded-lg' 
             value = { content }  
             onChange = { ( e ) => setContent( e.target.value ) }

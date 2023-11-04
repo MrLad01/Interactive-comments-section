@@ -52,12 +52,12 @@ const CommentForm:React.FC<CommentFormProps> = ( { replyingTo, replies, setBacke
         >
           <img 
             src = { `../../src/assets/${ userImage.png }` }  
-            alt = ""  
+            alt = "user"  
             className = 'w-12 h-12' 
           />
           <textarea 
-            name = "" 
-            id = "" 
+            name = "reply" 
+            id = "reply1" 
             className = 'w-full h-28 py-3 px-6 outline-1 border-2 rounded-lg' 
             value = { content }  
             onChange = { ( e ) => setContent( e.target.value ) }
@@ -74,8 +74,8 @@ const CommentForm:React.FC<CommentFormProps> = ( { replyingTo, replies, setBacke
           name = 'comments-form'  
         >
           <textarea 
-            name = "" 
-            id = "" 
+            name = "reply" 
+            id = "reply2" 
             className = 'w-full h-28 py-3 px-6 outline-1 border-2 rounded-lg' 
             value = { content }  
             onChange = { ( e ) => setContent( e.target.value ) }
