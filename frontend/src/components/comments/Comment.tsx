@@ -13,6 +13,7 @@ import Reply from './Reply';
 import { CommentContext } from '../../App';
 
 import { deleteComment } from '../../helpers';
+// import { Link } from 'react-router-dom';
 
 
 
@@ -52,7 +53,6 @@ const Comment: React.FC<CommentProps> = ( { comment, parent, setParent } ) => {
     const [ reply, setReply ] = useState<boolean>(false);
     const [ del, setDel ] = useState<boolean>(false);
     const [ ed, setEd ] = useState<boolean>(false);
-
 
 
 
@@ -108,6 +108,7 @@ const Comment: React.FC<CommentProps> = ( { comment, parent, setParent } ) => {
 
     const handleDelete = ( e:React.MouseEvent ) => {
         e.preventDefault();
+        e.stopPropagation();
 
         setDel(!del);
 
@@ -199,7 +200,9 @@ const Comment: React.FC<CommentProps> = ( { comment, parent, setParent } ) => {
                                 <button 
                                     className = {`h-6 flex items-center justify-around p-2 gap-2 text-soft-red font-medium
                                     ${del && 'opacity-50'}`}
-                                    onClick = { () => setDel(!del) }
+                                    onClick = { () => {
+                                                        setDel(!del)
+                                                    } }
                                 >
                                     <img src = { deleteIcon } alt = "" />
                                     Delete
@@ -348,14 +351,17 @@ const Comment: React.FC<CommentProps> = ( { comment, parent, setParent } ) => {
                                 <h2 className = 'font-bold text-xl text-grayish-blue ' > Delete Comment </h2>
                                 <p className = 'text-grayish-blue'> Are you sure you want to delete this comment? This will remove the comment and can't be undone. </p>
                                   <div className = "flex gap-2" onAbort={() => setDel(!del)} >
-                                    <button 
+                                    <a 
                                         className = 'bg-grayish-blue text-white rounded-md px-4 py-3 text-base '
-                                         onClick = { () => setDel( !del )
-                                        }
-                                    > NO, CANCEL </button>
+                                        onClick = { () => {
+                                                            setDel( !del )
+                                                            }
+                                                    }
+                                        href = "/"
+                                    > NO, CANCEL </a>
                                     <button 
                                         className = 'text-white bg-soft-red rounded-md px-4 py-3 text-base '
-                                        onClick = { handleDelete } 
+                                        onClick = { handleDelete }
                                     > YES, DELETE </button>
                             </div>
                         </div>
