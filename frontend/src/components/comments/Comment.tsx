@@ -194,18 +194,17 @@ const Comment: React.FC<CommentProps> = ( { comment, parent, setParent } ) => {
                             
                             <div className = 'flex xs:max-md:hidden ' >
                             
-                                <button 
+                                <a 
                                     className = {`h-6 flex items-center justify-around p-2 gap-2 text-soft-red font-medium
                                     ${del && 'opacity-50'}`}
                                     onClick = { () => {
                                                         setDel(!del)
                                                     } }
+                                    href = "#delete "
                                 >
-                                    <a href = "#delete ">
                                         <img src = { deleteIcon } alt = "" />
                                          Delete
-                                    </a>
-                                </button> 
+                                </a> 
                             <button 
                                 className = {`h-6 flex items-center justify-around p-2 gap-2 text-moderate-blue font-medium
                                 ${ed && 'opacity-50'}`}
@@ -283,16 +282,15 @@ const Comment: React.FC<CommentProps> = ( { comment, parent, setParent } ) => {
                             :
 
                             <div className = 'flex ' >
-                                <button 
+                                <a 
                                     className = {`h-6 flex items-center justify-around p-2 gap-2 text-soft-red font-medium
                                     ${del && 'opacity-50'}`}
                                     onClick = { () => setDel(!del) }
+                                    href = "#delete"
                                     >
-                                    <a href = "#delete">
                                         <img src = { deleteIcon } alt = "" />
                                          Delete
-                                    </a>
-                                </button> 
+                                </a> 
                              <button 
                                     className = {`h-6 flex items-center justify-around p-2 gap-2 text-moderate-blue font-medium
                                     ${ed && 'opacity-50'}`}
